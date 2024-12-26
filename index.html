@@ -40,21 +40,63 @@
     </div>
   </nav>
 
-  <section id="home" class="hero">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 hero-content">
-          <span class="title"><b>Hello, I'm Saima.</b></span>
-          <h1>I build things for <span>the web.</span></h1>
-          <p class="lead">A passionate Web Programmer based in Mumbai, India.</p>
-          <div class="social-icons mt-4">
-            <a href="https://github.com/Saima223" target="_blank"><i class="bi bi-github"></i></a>
-            <a href="https://www.linkedin.com/in/saima223/" target="_blank"><i class="bi bi-linkedin"></i></a>
+ <!-- Hero Section -->
+<section id="home" class="hero">
+  <div class="hero-background">
+      <div class="gradient-sphere"></div>
+      <div class="gradient-sphere-2"></div>
+      <div class="grid-overlay"></div>
+  </div>
+  
+  <div class="container position-relative">
+      <div class="row min-vh-100 align-items-center">
+          <div class="col-lg-7 hero-content">
+              <div class="badge-container">
+                  <span class="status-badge">
+                      <span class="pulse"></span>
+                      Available for work
+                  </span>
+              </div>
+
+              <h1 class="hero-title">
+                  <span class="greeting">Hi, I'm Saima 👋</span>
+                  <span class="main-title">Crafting Digital <br>Experiences</span>
+              </h1>
+
+              <div class="hero-subtitle">
+                  <div class="typing-container">
+                      <span class="static-text">Specialized in</span>
+                      <span class="dynamic-text"></span>
+                  </div>
+              </div>
+
+              <p class="hero-description">
+                  Full Stack Developer crafting premium digital experiences. 
+                  Bringing 2+ years of expertise in MEAN Stack development 
+                  and a passion for creating seamless, user-centric solutions.
+              </p>
+
+              <div class="cta-group">
+                  <a href="#contact" class="btn btn-primary">
+                      <span>Let's Collaborate</span>
+                      <i class="bi bi-arrow-right"></i>
+                  </a>
+                  <a href="#projects" class="btn btn-outline">
+                      <span>View Projects</span>
+                      <div class="btn-outline-backdrop"></div>
+                  </a>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
-  </section>
+  </div>
+
+  <div class="scroll-indicator">
+      <div class="mouse">
+          <div class="wheel"></div>
+      </div>
+      <span>Scroll to explore</span>
+  </div>
+</section>
 
   <section id="about" class="section">
     <div class="container">
@@ -112,14 +154,100 @@
     </div>
   </section>
 
-  <section id="projects" class="section">
-    <div class="container">
-      <h1 class="text-center mb-5"><b>My Projects</b></h1>
-      <div class="projects-coming-soon">
-        <p>New projects coming soon...👻 </p>
+<!-- Projects Section -->
+<section id="projects" class="section-projects">
+  <div class="container">
+      <div class="section-header">
+          <h2 class="section-title">Featured Projects</h2>
+          <div class="project-filters">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="web">Web Apps</button>
+              <button class="filter-btn" data-filter="frontend">Frontend</button>
+              <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+          </div>
       </div>
-    </div>
-  </section>
+
+      <div class="projects-grid">
+          <!-- Project Card 1 -->
+          <div class="project-card" data-category="fullstack">
+              <div class="project-image">
+                  <img src="/api/placeholder/600/400" alt="E-Commerce Platform">
+                  <div class="project-overlay">
+                      <div class="tech-stack">
+                          <span>Angular</span>
+                          <span>Node.js</span>
+                          <span>MongoDB</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="project-content">
+                  <h3>E-Commerce Platform</h3>
+                  <p>A full-stack e-commerce solution with real-time inventory management, secure payments, and admin dashboard.</p>
+                  <div class="project-links">
+                      <a href="#" class="project-link">
+                          <i class="bi bi-github"></i> Code
+                      </a>
+                      <a href="#" class="project-link">
+                          <i class="bi bi-box-arrow-up-right"></i> Live Demo
+                      </a>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Project Card 2 -->
+          <div class="project-card" data-category="frontend">
+              <div class="project-image">
+                  <img src="/api/placeholder/600/400" alt="Task Management App">
+                  <div class="project-overlay">
+                      <div class="tech-stack">
+                          <span>React</span>
+                          <span>Redux</span>
+                          <span>Tailwind</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="project-content">
+                  <h3>Task Management App</h3>
+                  <p>A modern task management application with drag-and-drop functionality, team collaboration, and real-time updates.</p>
+                  <div class="project-links">
+                      <a href="#" class="project-link">
+                          <i class="bi bi-github"></i> Code
+                      </a>
+                      <a href="#" class="project-link">
+                          <i class="bi bi-box-arrow-up-right"></i> Live Demo
+                      </a>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Project Card 3 -->
+          <div class="project-card" data-category="web">
+              <div class="project-image">
+                  <img src="/api/placeholder/600/400" alt="Weather Dashboard">
+                  <div class="project-overlay">
+                      <div class="tech-stack">
+                          <span>JavaScript</span>
+                          <span>Weather API</span>
+                          <span>Chart.js</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="project-content">
+                  <h3>Weather Dashboard</h3>
+                  <p>Real-time weather forecasting application with interactive maps, charts, and location-based suggestions.</p>
+                  <div class="project-links">
+                      <a href="#" class="project-link">
+                          <i class="bi bi-github"></i> Code
+                      </a>
+                      <a href="#" class="project-link">
+                          <i class="bi bi-box-arrow-up-right"></i> Live Demo
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
 
   <section id="contact">
     <div class="container">
