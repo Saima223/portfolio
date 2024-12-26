@@ -1,6 +1,6 @@
 # Description
 
-This Simple Portfolio Project is a basic web page that showcases a personal portfolio. The primary purpose of this project is to provide a practical example for learning Git commands and workflow.
+This Simple Portfolio Project is a basic web page that showcases a personal portfolio. The primary purpose of this project is to provide a practical example for learning Git commands and workflow, "How to Use Git in Real Projects: Key Git Commands Explained" here is the blog --> [ https://hashnode.com/@saima223 ].
 
 ## Getting Started
 
