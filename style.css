@@ -51,12 +51,12 @@
   inset: 0;
   background-image: linear-gradient(var(--text) 1px, transparent 1px),
                     linear-gradient(90deg, var(--text) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-size: 50px 45px;
   background-color: transparent;
-  opacity: 0.08;
+  opacity: 0.09;
 
   /* Transform to tilt the grid */
-  transform: perspective(800px) rotateX(60deg);
+  transform: perspective(700px) rotateX(70deg);
   transform-origin: center;
 }
 
@@ -181,13 +181,13 @@
 }
 
 .btn-outline:hover .btn-outline-backdrop {
-  transform: translateX(0);
+  transform: translateX(1);
 }
 
 /* Scroll Indicator */
 .scroll-indicator {
   position: absolute;
-  bottom: 40px;
+  bottom: 34px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -266,22 +266,6 @@ body.dark-mode {
   --text-light: #a0a0a0;
 }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .main-title {
-      font-size: 3.5rem;
-  }
-
-  .tech-stack-orbital {
-      width: 300px;
-      height: 300px;
-  }
-
-  .tech-icon {
-      transform: rotate(calc(72deg * var(--i))) translateX(150px) rotate(calc(-72deg * var(--i)));
-  }
-}
-
 @media (max-width: 991px) {
   .hero-content {
       text-align: center;
@@ -291,41 +275,11 @@ body.dark-mode {
   .cta-group {
       justify-content: center;
   }
-
-  .tech-stack-orbital {
-      margin-top: 60px;
-  }
 }
 
 @media (max-width: 768px) {
   .main-title {
       font-size: 2.5rem;
-  }
-
-  .achievements {
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
-  }
-
-  .achievement-item {
-      align-items: center;
-  }
-
-  .tech-stack-orbital {
-      width: 250px;
-      height: 250px;
-  }
-
-  .tech-icon {
-      width: 50px;
-      height: 50px;
-      transform: rotate(calc(72deg * var(--i))) translateX(125px) rotate(calc(-72deg * var(--i)));
-  }
-
-  .tech-icon img {
-      width: 30px;
-      height: 30px;
   }
 }
 
@@ -736,6 +690,40 @@ body.dark-mode .hero-content p {
 }
 
 /* About and Contact Sections */
+.tech-label {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  color: #c0bebe;
+  font-weight: 500;
+}
+
+.custom-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom-icon img {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+}
+
+.logos .col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.logos img {
+  transition: transform 0.2s ease;
+}
+
+.logos img:hover {
+  transform: translateY(-5px);
+}
 .about-content,
 .tech-stack,
 .skills-container {
