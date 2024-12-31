@@ -690,6 +690,8 @@ body.dark-mode .hero-content p {
 }
 
 /* About and Contact Sections */
+section {
+  background: var(--bg);}
 .tech-label {
   font-size: 0.8rem;
   margin-top: 0.5rem;
@@ -785,40 +787,6 @@ body.dark-mode .contact-content p {
 
 .text-center {
   color: #7644ff;
-}
-
-/* Tech Stack */
-.logos img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Projects */
-.projects-coming-soon {
-  font-size: 24px;
-  font-weight: 600;
-  color: #333;
-  text-align: center;
-  padding: 60px 20px;
-  background-color: #f8f9fa;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-}
-
-body.dark-mode .projects-coming-soon {
-  color: #f8f9fa;
-  background-color: #333;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.projects-coming-soon p {
-  margin: 0;
-}
-
-.projects-coming-soon:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 /* Contact Section */
