@@ -138,7 +138,7 @@
 .cta-group {
   display: flex;
   gap: 16px;
-  margin: 32px 0;
+  margin: 30px 10px;
 }
 
 .btn {
@@ -952,6 +952,7 @@ body.dark-mode .footer-text {
   }
 
   .hero-content p {
+    padding: 20px;
     font-size: 14px;
   }
 
@@ -959,11 +960,7 @@ body.dark-mode .footer-text {
   .tech-stack,
   .skills-container {
     padding: 20px;
-  }
-
-  .projects-coming-soon {
-    font-size: 20px;
-    padding: 40px 15px;
+    margin: 15px;
   }
 
   #contact h2 {
