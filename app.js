@@ -6,6 +6,8 @@ let isDeleting = false;
 
 function typeText() {
     const dynamicText = document.querySelector('.dynamic-text');
+    if (!dynamicText) return;
+    
     const currentText = typingTexts[textIndex];
     
     if (isDeleting) {
@@ -18,140 +20,91 @@ function typeText() {
 
     if (!isDeleting && charIndex === currentText.length) {
         isDeleting = true;
-        setTimeout(typeText, 2000); // Pause at end
+        setTimeout(typeText, 2000);
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         textIndex = (textIndex + 1) % typingTexts.length;
-        setTimeout(typeText, 500); // Pause before
+        setTimeout(typeText, 500);
     } else {
         setTimeout(typeText, isDeleting ? 50 : 100);
     }
 }
 
-// Start typing animation
-typeText(); 
-
-// Smooth scroll for navigation
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-// Parallax effect for gradient spheres
-window.addEventListener('mousemove', (e) => {
-    const spheres = document.querySelectorAll('.gradient-sphere, .gradient-sphere-2');
-    const mouseX = e.clientX / window.innerWidth;
-    const mouseY = e.clientY / window.innerHeight;
-
-    spheres.forEach(sphere => {
-        const speed = sphere.classList.contains('gradient-sphere') ? 30 : -30;
-        sphere.style.transform = `translate(${mouseX * speed}px, ${mouseY * speed}px)`;
-    });
-});
-
 // Project Filtering
-document.addEventListener('DOMContentLoaded', () => {
+function initProjectFilters() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remove active class from all buttons
             filterBtns.forEach(b => b.classList.remove('active'));
-            // Add active class to clicked button
             btn.classList.add('active');
 
             const filterValue = btn.getAttribute('data-filter');
 
             projectCards.forEach(card => {
+                const isVisible = filterValue === 'all' || card.getAttribute('data-category') === filterValue;
                 card.style.opacity = '0';
                 card.style.transform = 'scale(0.8)';
                 
                 setTimeout(() => {
-                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                        card.style.display = 'block';
-                        setTimeout(() => {
+                    card.style.display = isVisible ? 'block' : 'none';
+                    if (isVisible) {
+                        requestAnimationFrame(() => {
                             card.style.opacity = '1';
                             card.style.transform = 'scale(1)';
-                        }, 50);
-                    } else {
-                        card.style.display = 'none';
+                        });
                     }
                 }, 300);
             });
         });
     });
-});
+}
 
-// Add scrolled class to navbar on scroll
-window.addEventListener('scroll', () => {
+// Dark mode functionality
+function initDarkMode() {
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    function setDarkMode(enabled) {
+        body.classList.toggle('dark-mode', enabled);
+        localStorage.setItem('darkMode', enabled ? 'enabled' : 'disabled');
+    }
+
+    // Initialize dark mode based on user preference
+    const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+    setDarkMode(isDarkMode);
+    darkModeToggle.checked = isDarkMode;
+
+    darkModeToggle.addEventListener('change', () => setDarkMode(darkModeToggle.checked));
+}
+
+// Initialize all functionality
+document.addEventListener('DOMContentLoaded', () => {
+    typeText();
+    initProjectFilters();
+    initDarkMode();
+    
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', e => {
+            e.preventDefault();
+            document.querySelector(anchor.getAttribute('href'))?.scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
+    window.addEventListener('scroll', () => {
+        navbar?.classList.toggle('scrolled', window.scrollY > 50);
+    });
 
-// Dark mode toggle functionality
-const darkModeToggle = document.getElementById('darkModeToggle');
-const body = document.body;
-const sunIcon = document.getElementById('sunIcon');
-const moonIcon = document.getElementById('moonIcon');
-
-// Function to update icon visibility
-function updateIcons(isDarkMode) {
-    sunIcon.style.display = isDarkMode ? 'none' : 'inline-block';
-    moonIcon.style.display = isDarkMode ? 'inline-block' : 'none';
-}
-
-// Function to enable dark mode
-function enableDarkMode() {
-    body.classList.add('dark-mode');
-    darkModeToggle.checked = true;
-    updateIcons(true);
-    localStorage.setItem('darkMode', 'enabled');
-}
-
-// Function to disable dark mode
-function disableDarkMode() {
-    body.classList.remove('dark-mode');
-    darkModeToggle.checked = false;
-    updateIcons(false);
-    localStorage.setItem('darkMode', null);
-}
-
-// Set dark mode by default if no preference is stored
-if (localStorage.getItem('darkMode') === null) {
-    enableDarkMode();
-} else {
-    // Otherwise, respect the stored preference
-    if (localStorage.getItem('darkMode') === 'enabled') {
-        enableDarkMode();
-    } else {
-        disableDarkMode();
-    }
-}
-
-// Handle toggle changes
-darkModeToggle.addEventListener('change', () => {
-    if (darkModeToggle.checked) {
-        enableDarkMode();
-    } else {
-        disableDarkMode();
-    }
-});
-
-// Close mobile menu when a link is clicked
-document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        const navbarCollapse = document.querySelector('.navbar-collapse');
-        if (navbarCollapse.classList.contains('show')) {
-            navbarCollapse.classList.remove('show');
-        }
+    // Mobile menu
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            document.querySelector('.navbar-collapse')?.classList.remove('show');
+        });
     });
 });
